@@ -7,6 +7,14 @@ public class Participant
     private boolean estPresent;
     private int nbKm;
 
+    public int getIdParticipant() {
+        return idParticipant;
+    }
+
+    public String getNomParticipant() {
+        return nomParticipant;
+    }
+
     public Participant(int idParticipant, String nomParticipant, boolean estPresent, int nbKm) {
         this.idParticipant = idParticipant;
         this.nomParticipant = nomParticipant;

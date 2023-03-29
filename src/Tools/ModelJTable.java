@@ -34,6 +34,16 @@ public class ModelJTable extends AbstractTableModel
 
     public void loadDatasCaptage(ArrayList<Captage> uneListe)
     {
+        colonnes = new String[]{"numéro","Description","Volume"};
+        lignes = new Object[uneListe.size()][3];
+        int i=0;
+        for (Captage captage: uneListe){
+            lignes[i][0]=captage.getIdCaptage();
+            lignes[i][1]=captage.getDescription();
+
+            i++;
+        }
+        fireTableChanged(null);
         // A compléter ici
 
     }

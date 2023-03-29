@@ -11,6 +11,10 @@ public class Formation
 
     private ArrayList<Participant> lesParticipants;
 
+    public ArrayList<Participant> getLesParticipants() {
+        return lesParticipants;
+    }
+
     public Formation(int idFormation, String nomFormation, int prixFormation) {
         this.idFormation = idFormation;
         this.nomFormation = nomFormation;
@@ -25,30 +29,43 @@ public class Formation
 
     // Cette méthode permet de compter le nombre de participants
     // réellement présents à la formation.
-    public int GetNombreDePresents()
+    public int GetNombreDePresents(Formation uneFormation)
     {
-        // A compléter ici
-
-        return 0;
+        int nbPresent=0;
+        for (Participant lesParticipants: uneFormation.getLesParticipants()){
+            if (lesParticipants.isEstPresent()){
+                nbPresent++;
+            }
+        }
+        return nbPresent;
     }
 
     // Cette méthode permet de calculer le montant total
     // des frais kilométriques versés pour une formation
     // en ne prenant en compte que les participants présents.
     // On rembourse 1.89 du KM
-    public double CalculerFraisRemboursementKilometriques()
+    public double CalculerFraisRemboursementKilometriques(Formation uneFormation)
     {
-        // A compléter ici
+        double nbkm=0;
 
-        return 0;
+                nbkm = nbkm + GetNombreDePresents(uneFormation) * 1.89;
+
+        return nbkm;
     }
 
     // Cette méthode permet de calculer le taux de présence
     // par rapport au nombre d'inscrits
-    public double TauxDePresence()
+    public double TauxDePresence(Formation uneFormation)
     {
-        // A compléter ici
-        return 0;
+        int present=0;
+        int inscrit=0;
+        for (Participant lesParticipant : uneFormation.getLesParticipants()){
+            inscrit++;
+            if (lesParticipant.isEstPresent()){
+                present ++;
+            }
+        }
+        return present/inscrit;
     }
 
     // Cette méthode permet de calculer le bénéfice de la formation.
@@ -56,7 +73,18 @@ public class Formation
     // les frais kilométriques versés
     public double BeneficeFormation()
     {
-        // A compléter ici
         return  0;
+    }
+
+    public int getIdFormation() {
+        return idFormation;
+    }
+
+    public String getNomFormation() {
+        return nomFormation;
+    }
+
+    public int getPrixFormation() {
+        return prixFormation;
     }
 }
